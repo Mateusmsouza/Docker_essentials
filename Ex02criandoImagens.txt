@@ -1,0 +1,32 @@
+  ____      _                 _
+ / ___|_ __(_) __ _ _ __   __| | ___    _   _ _ __ ___   __ _
+| |   | '__| |/ _` | '_ \ / _` |/ _ \  | | | | '_ ` _ \ / _` |
+| |___| |  | | (_| | | | | (_| | (_) | | |_| | | | | | | (_| |
+ \____|_|  |_|\__,_|_| |_|\__,_|\___/   \__,_|_| |_| |_|\__,_|
+
+ ___
+|_ _|_ __ ___   __ _  __ _  ___ _ __ ___
+ | || '_ ` _ \ / _` |/ _` |/ _ \ '_ ` _ \
+ | || | | | | | (_| | (_| |  __/ | | | | |
+|___|_| |_| |_|\__,_|\__, |\___|_| |_| |_|
+
+
+$ docker container run -ti ubuntu bash # rodando ubuntu com terminal iterativo
+
+				\
+$ apt-get update		|	
+$ apt-get install -y figlet	|-----> Modificando a ISO
+$ figlet "hello docker"		|
+				/
+
+$ exit # Saindo do container
+
+$ docker container ls -a # listando
+
+
+$ docker container diff <container ID> # listará todos os arquivos alterados no container
+
+$ docker image tag <container ID> <nome da tag> # Ao tagear, uma nova imagem é criada
+
+$ docker container run <nome da tag> figlet hello # Agora é possível dar um run com o nome da tag que agora é uma imagem
+

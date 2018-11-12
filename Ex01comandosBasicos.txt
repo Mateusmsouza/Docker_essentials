@@ -1,0 +1,5 @@
+docker image pull [image_name] # baixa a imagem da Docker Store
+
+docker container run -it alpine /bin/sh # com o -it e /bin/sh, o terminal do container será iniciado e você poderá rodar comandos dentro do container.
+
+docker container exec <container ID> ls # executa o ls dentro de <container ID>
