@@ -1,0 +1,16 @@
+FROM debian # from [imagem]
+MAINTAINER Mateus # quem escreve
+
+RUN apt-get update && apt-get install apache2 && apt-get clean # executa comandos no container, cada RUN executa
+ADD teste.txt /diretorio/ # copia um arquvio ou diretório da máquina host para o container
+CMD ["sh", "-c", "echo", "$HOME"] # passa um parâmetro para o entrypoint (processo principal do container)
+LABEL Description="Bla bla b metadata" # adiciona metadata
+COPY opa.txt /diretorio/ # copia apenas arquivos ou diretórios diferente do add que lida também com arquivos empacotados
+ENTRYPOINT ["/user/bin/apache2ctl", "-D", "FOREGROUND"] # define o entrypoint que é o processo principal do container. Caso ele seja finalizado, o container é derrubado.
+ENV meunome="Mateus" # cria uma variável de ambiente para o container
+EXPOSE 80 # Expondo a porta 80 do container
+USER user # define quem vai ser o usuário adm do container, por padrão é o root
+WORKDIR /desktop #diretório de trabalho do container
+VOLUME /diretorio # cria um volume no diretório
+
+

@@ -1,0 +1,1 @@
+docker build -t nome_da_imagem:1.0 . # o docker build recebe como parametro o nome e versão após o -t, seguido do diretório onde o dockerfile se encontra
