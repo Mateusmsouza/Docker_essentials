@@ -3,3 +3,8 @@ CID=$(sudo docker create sath89/oracle-12c) # Cria uma variavel no shell
 sudo docker start $CID # start no container
 sudo docker logs -f $CID # este comando vai inicializar o database
 sudo docker exec -it $CID sqlplus sys as sysdba # Executa o container liberando interface para rodar SQL o password é oracle
+
+CREATE USER mateus IDENTIFIED BY "password";
+GRANT CREATE SESSION, CREATE TABLE TO mateus;
+ALTER USER mateus QUOTA 500M ON USERS;
+CONN mateus

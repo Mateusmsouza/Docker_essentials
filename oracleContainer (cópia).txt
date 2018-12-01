@@ -1,0 +1,50 @@
+$ sudo docker create \
+> -v /tmp/.X11-unix/:/tmp/.X11-unix/:ro \
+> --name Oracle \
+> sath89/oracle-12c
+
+$ sudo docker start Oracle
+
+$ sudo docker logs -f Oracle
+
+# Abrir uma nova instâcia do container oracle:
+$ sudo docker exec -ti Oracle /bin/bash
+
+/# adduser mateus --disabled-password --uid=3000
+/# adduser mateus dba
+
+/# ls -l /u01/app/oracle-product/12.1.0/xe/sqldeveloper/sqldeveloper.sh
+
+/# su - mateus
+
+/# export DISPLAY=[verificar executando $DISPLAY na máquina host]
+
+# abrir nova instância do container oracle
+
+/# apt-get update
+/# apt-get install -y libxext6, libxtst6, libxi6, xauth
+
+# agora, no docker host
+$ xatuh list $DISPLAY
+outpot algo como> MIT-MAGIC-COOKIE-1  a741798fd15a8be4ca8d2f192063ead7
+
+# criar um arquivo ADDCREDENTIALS com o conteúdo:
+
+sudo docker exec \
+        --user mateus \
+        Oracle \
+        touch /home/mateus/.Xauthority
+
+sudo docker exec \
+        -- user mateus \
+        Oracle \
+        xauth add $DISPLAY . [chave gerada anteriormente]
+
+# agora no docker host execute
+$ sudo docker exec --user mateus Oracle xauth list $DISPLAY 
+
+
+
+
+
+
